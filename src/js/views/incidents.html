@@ -1,0 +1,35 @@
+<div>
+  <oj-input-text
+    maxlength="30"
+    placeholder="Type to filter first name"
+    on-raw-value-changed="[[filterChanged]]"
+    value="{{filter}}">
+  </oj-input-text>
+
+</div>
+
+<div>
+  <oj-bind-for-each data='[[datasource]]'>
+    <template>
+      <oj-collapsible>
+        <span slot="header">
+          <span>
+            <oj-bind-text value="[[$current.data.FIRST_NAME]]"></oj-bind-text>
+          </span>
+        </span>
+        <span>
+          <h2>
+            <oj-bind-text value="[[$current.data.FIRST_NAME]]"></oj-bind-text>
+          </h2>
+          <h3>
+            <oj-bind-text value="[[$current.data.LAST_NAME]]"></oj-bind-text>
+          </h3>
+          <h3>
+            <oj-bind-text value="[[$current.data.HIRE_DATE]]"></oj-bind-text>
+          </h3>
+        </span>
+      </oj-collapsible>
+      <hr />
+    </template>
+  </oj-bind-for-each>
+</div>

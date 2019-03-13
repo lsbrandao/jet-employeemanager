@@ -1,0 +1,32 @@
+<!--
+ Copyright (c) 2014, 2019, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Dashboard Content Area</h1>
+  <div>
+    <oj-data-grid
+      on-selection-changed="[[handleSelectionChanged]]"
+      id="datagrid"
+      style="height:200px; max-width:477px"
+      data="[[dataSource]]"
+      selection-mode.row="single"
+      dnd.reorder.row="enable"
+      header.column.style="width:100px">
+    </oj-data-grid>
+  </div>
+
+  <div>
+    <my-employee-form
+      first-name='{{inputFirstName}}'
+      last-name='{{inputLastName}}'
+      hire-date='{{inputHireDate}}'
+      hire-salary='{{inputSalary}}'>
+      <span slot="toolbar">
+        <oj-button on-oj-action="[[create]]">Create</oj-button>
+        <oj-button on-oj-action="[[update]]">Update</oj-button>
+        <oj-button on-oj-action="[[remove]]">Delete</oj-button>
+      </span>
+    </my-employee-form>
+  </div>
+</div>
