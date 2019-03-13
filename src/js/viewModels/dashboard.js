@@ -8,7 +8,8 @@ define([
     'ojs/ojinputtext',
     'ojs/ojformlayout',
     'my-employee-form/loader',
-    'ojs/ojbutton'
+    'ojs/ojbutton',
+    'ojs/ojdatetimepicker'
   ],
   function (oj, ko, $, EmployeeFactory) {
 
@@ -22,6 +23,13 @@ define([
       self.inputLastName = ko.observable();
       self.inputHireDate = ko.observable();
       self.inputSalary = ko.observable();
+
+      // Listen to locale changes
+      self.dashboardHeaderLabel = ko.observable(oj.Translations.getTranslatedString('dashboardHeader'));
+
+      document.addEventListener("localeListener", function () {
+        self.dashboardHeaderLabel(oj.Translations.getTranslatedString('dashboardHeader'));
+      });
 
 
       self.collection = EmployeeFactory.createEmployeeCollection();

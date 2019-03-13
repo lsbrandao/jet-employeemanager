@@ -1,4 +1,6 @@
-<div>
+<div class="oj-hybrid-padding">
+  <h1>Incidents Content Area</h1>
+
   <oj-input-text
     maxlength="30"
     placeholder="Type to filter first name"
@@ -6,9 +8,6 @@
     value="{{filter}}">
   </oj-input-text>
 
-</div>
-
-<div>
   <oj-bind-for-each data='[[datasource]]'>
     <template>
       <oj-collapsible>
@@ -32,4 +31,5 @@
       <hr />
     </template>
   </oj-bind-for-each>
+
 </div>

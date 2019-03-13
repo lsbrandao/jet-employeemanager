@@ -1,16 +1,10 @@
-/**
- * @license
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates.
- * The Universal Permissive License (UPL), Version 1.0
- */
 'use strict';
 
 /**
  * Example of Require.js boostrap javascript
  */
 
-requirejs.config(
-{
+requirejs.config({
   baseUrl: 'js',
 
   // Path mappings for the logical module names
@@ -32,11 +26,18 @@ requirejs.config(
     'customElements': 'libs/webcomponents/custom-elements.min',
     'proj4': 'libs/proj4js/dist/proj4-src',
     'css': 'libs/require-css/css',
-    'touchr': 'libs/touchr/touchr'    
+    'touchr': 'libs/touchr/touchr'
   }
   //endinjector
-}
-);
+  ,
+  config: {
+    ojL10n: {
+      merge: {
+        'ojtranslations/nls/ojtranslations': 'resources/nls/l10'
+      }
+    }
+  }
+});
 
 /**
  * A top-level require call executed by the Application.
@@ -45,10 +46,11 @@ requirejs.config(
  * objects in the callback
  */
 require(['ojs/ojcore', 'knockout', 'appController', 'jquery', 'ojs/ojknockout',
-  'ojs/ojmodule', 'ojs/ojrouter', 'ojs/ojnavigationlist', 'ojs/ojbutton', 'ojs/ojtoolbar'],
+    'ojs/ojmodule', 'ojs/ojrouter', 'ojs/ojnavigationlist', 'ojs/ojbutton', 'ojs/ojtoolbar'
+  ],
   function (oj, ko, app, $) { // this callback gets executed when all required modules are loaded
 
-    $(function() {
+    $(function () {
 
       function init() {
         oj.Router.sync().then(

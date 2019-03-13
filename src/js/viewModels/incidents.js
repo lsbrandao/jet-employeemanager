@@ -3,20 +3,16 @@ define([
     'knockout',
     'jquery',
     '../factories/EmployeeFactory',
-    'my-employee-form-container/loader',
-    'ojs/ojknockout-model'
+    'ojs/ojknockout-model',
+    'ojs/ojcollapsible'
   ],
   function (oj, ko, $, EmployeeFactory) {
 
     function IncidentsViewModel() {
       var self = this;
 
-
       self.collection = EmployeeFactory.createEmployeeCollection();
-      self.collection.fetch({
-        'startIndex': 7,
-        'fetchSize': 3
-      });
+      self.collection.fetch();
 
       self.filter = ko.observableArray('');
 
@@ -50,6 +46,7 @@ define([
       };
 
       self.datasource = oj.KnockoutUtils.map(self.collection, null, true);
+
     }
 
     return new IncidentsViewModel();

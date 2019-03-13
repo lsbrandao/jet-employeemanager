@@ -1,8 +1,0 @@
-my-employee-form-container:not(.oj-complete){
-  visibility: hidden;
-}
-
-my-employee-form-container{
-	min-height: 50px;
-	width: 50px;
-}

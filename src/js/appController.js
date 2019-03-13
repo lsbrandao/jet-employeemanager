@@ -1,17 +1,14 @@
-/**
- * @license
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates.
- * The Universal Permissive License (UPL), Version 1.0
- */
-/*
- * Your application specific code will go here
- */
 define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-element', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarraytabledatasource',
     'ojs/ojoffcanvas'
   ],
   function (oj, ko, moduleUtils) {
     function ControllerViewModel() {
       var self = this;
+
+      self.dashboardLabel = ko.observable(oj.Translations.getTranslatedString('dashboardLabel'));
+      self.incidentsLabel = ko.observable(oj.Translations.getTranslatedString('incidentsLabel'));
+      self.customersLabel = ko.observable(oj.Translations.getTranslatedString('customersLabel'));
+      self.aboutLabel = ko.observable(oj.Translations.getTranslatedString('aboutLabel'));
 
       self.setLangAction = function (event) {
         var newLang = event.target.value;
@@ -24,6 +21,10 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
               $('html').attr('dir', 'ltr');
             }
             document.dispatchEvent(new CustomEvent('localeListener'));
+            self.dashboardLabel(oj.Translations.getTranslatedString('dashboardLabel'));
+            self.incidentsLabel(oj.Translations.getTranslatedString('incidentsLabel'));
+            self.customersLabel(oj.Translations.getTranslatedString('customersLabel'));
+            self.aboutLabel(oj.Translations.getTranslatedString('aboutLabel'));
           });
       };
 
@@ -83,22 +84,22 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
 
       // Navigation setup
       var navData = [{
-          name: 'Dashboard',
+          name: self.dashboardLabel,
           id: 'dashboard',
           iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-chart-icon-24'
         },
         {
-          name: 'Incidents',
+          name: self.incidentsLabel,
           id: 'incidents',
           iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'
         },
         {
-          name: 'Customers',
+          name: self.customersLabel,
           id: 'customers',
           iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'
         },
         {
-          name: 'About',
+          name: self.aboutLabel,
           id: 'about',
           iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'
         }

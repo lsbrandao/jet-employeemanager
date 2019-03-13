@@ -3,7 +3,9 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 <div class="oj-hybrid-padding">
-  <h1>Dashboard Content Area</h1>
+  <h1>
+    <oj-bind-text value="[[dashboardHeaderLabel]]"></oj-bind-text>
+  </h1>
   <div>
     <oj-data-grid
       on-selection-changed="[[handleSelectionChanged]]"
@@ -14,6 +16,12 @@
       dnd.reorder.row="enable"
       header.column.style="width:100px">
     </oj-data-grid>
+  </div>
+
+  <br />
+
+  <div>
+    <oj-input-date id="date"></oj-input-date>
   </div>
 
   <div>
